@@ -1,0 +1,143 @@
+stages:
+  - docker
+  - build
+  - package
+  - deploy
+
+
+docker-container:
+  image: docker:18
+  stage: docker
+  tags:
+    - cgg
+    - docker-docker
+  variables:
+    GIT_DEPTH: 1
+    TAG_PREFIX: "hexme-"
+    DOCKERFILE: "Dockerfile"
+
+  script:
+    - CSUM=$(sha3sum -a 224 ${DOCKERFILE} | cut -d " " -f 1)
+    - TAG="${CI_REGISTRY_IMAGE}:${TAG_PREFIX}${CSUM}"
+    - TAG_LATEST="${CI_REGISTRY_IMAGE}:${TAG_PREFIX}latest"
+    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+    - docker pull "${TAG}" && [[ "${CI_PIPELINE_SOURCE}" != "web" ]] && docker tag "${TAG}" "${TAG_LATEST}" && docker push "${TAG_LATEST}" && exit 0
+    - docker pull "${TAG_LATEST}" || true
+    - >
+      docker build
+      --file ${DOCKERFILE}
+      --pull
+      --build-arg VCS_REF=$CI_COMMIT_SHA
+      --build-arg VCS_URL=$CI_PROJECT_URL
+      --cache-from "${TAG_LATEST}"
+      --tag "${TAG}"
+      .
+    - docker push "${TAG}"
+    - docker tag "${TAG}" "${TAG_LATEST}"
+    - docker push "${TAG_LATEST}"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+
+mesh:
+  image: $CI_REGISTRY_IMAGE:hexme-latest
+  stage: build
+  variables:
+    GIT_DEPTH: 1
+  needs:
+    - job: docker-container
+  tags:
+    - cgg
+    - docker-docker
+  script:
+    - source /root/.bashrc
+    - conda update -n base conda
+    - conda activate snakemake     
+    - snakemake -s Snakemesh --cores=32
+  cache:
+    key: meshes
+    paths:
+      - meshes/
+      - .snakemake/
+  artifacts:
+    paths:
+      - meshes/
+      - .snakemake/
+    expire_in: 1 hour
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+      
+report:
+  image: $CI_REGISTRY_IMAGE:hexme-latest
+  stage: package
+  variables:
+    GIT_DEPTH: 1
+  needs:
+    - job: mesh      
+  tags:
+    - cgg
+    - docker-docker
+  script:
+    - source /root/.bashrc
+    - conda update -n base conda
+    - conda activate snakemake     
+    - xvfb-run snakemake --cores=32
+    - snakemake --report index.html
+    - zip -r --log-info hexme.zip meshes/
+    - sed -i -e 's/For large reports, this can take a while//g' index.html
+    - sed -i -e 's/<title>Snakemake Report/<title>HEXME/g' index.html
+    - sed -i -e 's/Loading Snakemake Report/Loading HEXME/g' index.html
+    - sed -i -e 's/snakemake.readthedocs.io">Snakemake Report/cgg.unibe.ch\/hexme\/hexme.zip">HEXME/g' index.html
+    - sed -i -e 's/Results/Catalog/g' index.html
+  cache:
+    key: report
+    paths:
+      - meshes/
+      - report/
+      - figs/
+      - index.html
+      - hexme.zip
+      - .snakemake/
+  artifacts:
+    paths:
+      - report/
+      - figs/
+      - index.html
+      - .snakemake/
+    expire_in: 1 hour
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+      
+publish:
+  image: $CI_REGISTRY_IMAGE:hexme-latest
+  stage: deploy
+  needs:
+    - job: report
+  tags:
+    - cgg
+    - docker-docker
+  environment:
+    name: staging
+    url: https://cgg.unibe.ch/hexme/
+  variables:
+    SSH_REMOTE: hexme@pluto.inf.unibe.ch
+  script:
+    - pacman -Syu --noconfirm
+    - pacman -S rsync openssh --noconfirm
+    - mkdir -p ~/.ssh
+    - cp CI/known_hosts ~/.ssh/
+    - echo "${PLUTO_SSHKEY_B64}" | base64 -d > ~/.ssh/id_ed25519
+    - chmod -R 700  ~/.ssh
+    - ssh $SSH_REMOTE "echo ok"
+    - CI/deploy.sh public staging
+  cache:
+    key: report
+    paths:
+      - meshes/
+      - report/
+      - figs/
+      - index.html
+      - hexme.zip
+      - .snakemake/
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+  
