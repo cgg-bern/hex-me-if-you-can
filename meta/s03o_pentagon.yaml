@@ -1,0 +1,5 @@
+description: a simple extruded pentagon that requires a singular curve
+license: Public Domain
+name: s03o_pentagon
+original: original/s03o_pentagon.geo
+references: common

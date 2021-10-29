@@ -1,0 +1,5 @@
+description: extrusion of the 2D limit cycle (with a circular hole)
+license: Public Domain
+name: n11o_limit_cycle
+original: original/n11o_limit_cycle.stp
+references: common

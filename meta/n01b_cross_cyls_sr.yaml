@@ -1,0 +1,10 @@
+gmsh.model.mesh.setSize:
+- ipts: 0.03
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.MeshSizeExtendFromBoundary: 1
+- Mesh.MeshSizeFromPoints: 1
+- Mesh.MeshSizeFromCurvature: 0.08
+info: meta/n01o_cross_cyls_sr.yaml

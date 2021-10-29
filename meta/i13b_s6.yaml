@@ -1,0 +1,10 @@
+gmsh.model.mesh.setSize:
+- ipts: 2
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.MeshSizeExtendFromBoundary: 1
+- Mesh.MeshSizeFromPoints: 1
+- Mesh.MeshSizeFromCurvature: 12
+info: meta/i13o_s6.yaml

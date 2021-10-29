@@ -1,0 +1,5 @@
+description: DLR-F6 model 
+license: Unknown - AIAA-DPW/DLR
+name: i31o_dlr_f6
+original: original/i31o_dlr_f6.brep
+references: 2nd AIAA CFD Drag Prediction Workshop, https://aiaa-dpw.larc.nasa.gov/Workshop2/DLR-F6-geom.html

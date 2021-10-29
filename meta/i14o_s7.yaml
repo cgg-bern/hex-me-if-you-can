@@ -1,0 +1,5 @@
+description: automotive mechanical part
+license: Apache 2.0
+name: i14o_s7
+original: original/i14o_s7.step
+references: MAMBO S7

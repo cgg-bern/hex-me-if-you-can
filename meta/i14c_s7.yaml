@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMax: 10
+- Mesh.MeshSizeFromCurvature: 6
+info: meta/i14o_s7.yaml

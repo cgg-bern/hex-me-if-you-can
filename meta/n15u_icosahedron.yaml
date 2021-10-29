@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMin: 0.25
+- Mesh.CharacteristicLengthMax: 0.25
+info: meta/n15o_icosahedron.yaml

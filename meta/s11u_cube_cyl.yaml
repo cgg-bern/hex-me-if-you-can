@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMin: 0.75
+- Mesh.CharacteristicLengthMax: 0.75
+info: meta/s11o_cube_cyl.yaml

@@ -1,0 +1,5 @@
+description: a box minus a cylinder at a corner, which requires two singular lines
+license: Public Domain
+name: s07o_notch
+original: original/s07o_notch.geo
+references: common

@@ -1,0 +1,5 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- Mesh.CharacteristicLengthMax: 2
+info: meta/i07o_m7.yaml

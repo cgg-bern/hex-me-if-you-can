@@ -1,0 +1,5 @@
+description: a simple tetrahedron that requires a singular node
+license: Public Domain
+name: s04o_tetrahedron
+original: original/s04o_tetrahedron.geo
+references: common

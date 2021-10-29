@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMax: 0.15
+- Mesh.MeshSizeFromCurvature: 6
+info: meta/n03o_skijump_box_cyl.yaml

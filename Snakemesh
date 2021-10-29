@@ -1,0 +1,18 @@
+include: "utilies.smk"
+
+rule meshes:
+    input:
+        expand(expand("meshes/{id}{{res}}_{extra}.vtk", zip, id=ID, extra=EXTRA), res=RES)
+
+rule cad2vtk:
+    input:
+        cad=lambda wildcards: "original/{id}o_{extra}."+input_cadext(wildcards.id+"o_"+wildcards.extra),
+        meta="meta/{id}{res}_{extra}.yaml"
+    output:
+        "meshes/{id, [sni]\d{2}}{res, [cub]}_{extra}.vtk"
+    log:
+        "meshes/logs/{id}{res}_{extra}.txt"
+    threads: 8
+    shell:
+        "python3 scripts/tetme.py {input.meta} {output} {wildcards.res} 2>&1 | tee -a {log}"
+

@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMin: 0.05
+- Mesh.CharacteristicLengthMax: 0.05
+info: meta/i17o_s20.yaml

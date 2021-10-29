@@ -1,0 +1,5 @@
+description: automotive mechanical part
+license: Apache 2.0
+name: i12o_s5
+original: original/i12o_s5.step
+references: MAMBO S5

@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMin: 0.03
+- Mesh.CharacteristicLengthMax: 0.03
+info: meta/n01o_cross_cyls_sr.yaml

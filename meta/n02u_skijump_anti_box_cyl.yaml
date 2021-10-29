@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMin: 0.04
+- Mesh.CharacteristicLengthMax: 0.04
+info: meta/n02o_skijump_anti_box_cyl.yaml

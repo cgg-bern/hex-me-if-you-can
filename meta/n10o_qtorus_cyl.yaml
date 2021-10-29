@@ -1,0 +1,5 @@
+description: quarter of a torus that is perforated by a cylinder from one end
+license: Apache 2.0
+name: n10o_qtorus_cyl
+original: original/n10o_qtorus_cyl.step
+references: MAMBO

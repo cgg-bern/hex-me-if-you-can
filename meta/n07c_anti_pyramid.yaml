@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.CharacteristicLengthMax: 0.2
+- Mesh.MeshSizeFromCurvature: 6
+info: meta/n07o_anti_pyramid.yaml

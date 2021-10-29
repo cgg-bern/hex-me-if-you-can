@@ -1,0 +1,5 @@
+description: simple cube, rotated along two axis
+license: Public Domain
+name: s01o_cube
+original: original/s01o_cube.geo
+references: common

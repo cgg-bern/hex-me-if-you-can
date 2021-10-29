@@ -1,0 +1,5 @@
+description: A cube minus a quarter of hemisphere centered on a vertex
+license: Public Domain
+name: s14o_cube_corner_sub_sphere
+original: original/s14o_cube_corner_sub_sphere.stp
+references: common

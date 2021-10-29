@@ -1,0 +1,5 @@
+description: A box minus half of a cylinder, making a small Roman bridge
+license: Apache 2.0
+name: s09o_bridge
+original: original/s09o_bridge.step
+references: MAMBO

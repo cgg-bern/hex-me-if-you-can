@@ -1,0 +1,11 @@
+gmsh.model.mesh.setSize:
+- ipts: 0.1
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+- Mesh.MeshSizeExtendFromBoundary: 1
+- Mesh.MeshSizeFromPoints: 1
+- Mesh.MeshSizeFromCurvature: 18
+- Mesh.CharacteristicLengthFactor: 4
+info: meta/n08o_pentapyr.yaml

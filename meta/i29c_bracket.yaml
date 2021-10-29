@@ -1,0 +1,7 @@
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 1
+- Mesh.CharacteristicLengthMax: 8
+- Mesh.MeshSizeFromCurvature: 6
+info: meta/i29o_bracket.yaml

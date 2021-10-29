@@ -1,0 +1,7 @@
+gmsh.model.mesh.setSize:
+- ipts: 1
+gmsh.option.setNumber:
+- Mesh.Algorithm: 2
+- Mesh.Algorithm3D: 10
+- General.NumThreads: 8
+info: meta/i07o_m7.yaml

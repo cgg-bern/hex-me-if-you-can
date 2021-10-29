@@ -1,0 +1,5 @@
+description: a simple prism (extruded triangle) requires a singular curve
+license: Public Domain
+name: s02o_prism
+original: original/s02o_prism.geo
+references: common
