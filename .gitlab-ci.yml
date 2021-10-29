@@ -36,7 +36,7 @@ docker-container:
     - docker tag "${TAG}" "${TAG_LATEST}"
     - docker push "${TAG_LATEST}"
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
+    - if: $CI_COMMIT_BRANCH == "main"
 
 mesh:
   image: $CI_REGISTRY_IMAGE:hexme-latest
@@ -64,7 +64,7 @@ mesh:
       - .snakemake/
     expire_in: 1 hour
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
+    - if: $CI_COMMIT_BRANCH == "main"
       
 report:
   image: $CI_REGISTRY_IMAGE:hexme-latest
@@ -105,7 +105,7 @@ report:
       - .snakemake/
     expire_in: 1 hour
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
+    - if: $CI_COMMIT_BRANCH == "main"
       
 publish:
   image: $CI_REGISTRY_IMAGE:hexme-latest
@@ -139,5 +139,5 @@ publish:
       - hexme.zip
       - .snakemake/
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
+    - if: $CI_COMMIT_BRANCH == "main"
   
