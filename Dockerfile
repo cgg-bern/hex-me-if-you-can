@@ -8,7 +8,7 @@ RUN pacman -Syu --noconfirm \
     && pacman -S libgl --noconfirm \
     && pacman -S git openmp fltk glu opencascade cmake xorg-server-xvfb python pandoc texlive-core unzip zip --noconfirm \
     && git clone http://gitlab.onelab.info/gmsh/gmsh.git \
-    && cd gmsh; mkdir build/;  cd build/; cmake -DENABLE_BUILD_DYNAMIC=1 -DENABLE_OPENMP=1 ..; make -j8; make install; cd ../../ \
+    && cd gmsh; git checkout a159bb0c; mkdir build/;  cd build/; cmake -DENABLE_BUILD_DYNAMIC=1 -DENABLE_OPENMP=1 ..; make -j8; make install; cd ../../ \
     && curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh \
     && bash Mambaforge-$(uname)-$(uname -m).sh -b \
     && conda init bash \
