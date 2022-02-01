@@ -19,7 +19,7 @@ RUN pacman -Syu --noconfirm \
     && conda install -c conda-forge paraview 
 
 RUN pacman -Syu --noconfirm \
-    && git clone http://gitlab.onelab.info/gmsh/gmsh.git --branch gmsh_4_8_4 \
+    && git clone http://gitlab.onelab.info/gmsh/gmsh.git --branch gmsh_4_9_3 \
     && cd gmsh; mkdir build/;  cd build/; cmake -DENABLE_BUILD_DYNAMIC=1 -DENABLE_OPENMP=1 ..; make -j8; make install; cd ../../
 
 
