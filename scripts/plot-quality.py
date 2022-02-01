@@ -19,11 +19,11 @@ def quality(fig, dim):
     gmsh.plugin.setNumber("AnalyseMeshQuality", "DimensionOfElements", dim)
     gmsh.plugin.setNumber("AnalyseMeshQuality", "CreateView", 1)
     gmsh.plugin.setNumber("AnalyseMeshQuality", "Recompute", 1)
-    gmsh.plugin.run("AnalyseMeshQuality")
+    view_tag = gmsh.plugin.run("AnalyseMeshQuality")
     
     
     
-    dt, tags, icn, _, nc = gmsh.view.getHomogeneousModelData(0, 0)
+    dt, tags, icn, _, nc = gmsh.view.getHomogeneousModelData(view_tag, 0)
 
 
     #icn = np.array([arr[0] for arr in data])
