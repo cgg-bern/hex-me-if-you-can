@@ -26,8 +26,6 @@ def quality(fig, dim):
     dt, tags, icn, _, nc = gmsh.view.getHomogeneousModelData(view_tag, 0)
 
 
-    #icn = np.array([arr[0] for arr in data])
-
     plt.figure()
     plt.hist(icn, 100, (0, 1), color="Gray")
 
