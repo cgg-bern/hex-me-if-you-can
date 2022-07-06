@@ -1,6 +1,6 @@
-# [HEXME](https://cgg.unibe.ch/hexme/hexme.zip) -- *["Hex Me If You Can"](https://cgg.unibe.ch/hexme/)*
+# [HexMe](https://hexme.algohex.eu) -- *["Hex Me If You Can"](https://diglib.eg.org/handle/10.1111/cgf14608)*
 
-Here is **HEXME**, the first dataset composed of tetrahedral meshes *with feature-entities* whose main purpose is to humanly benchmark the hexahedral meshers, and related algorithms such as 3D frame field generation.
+Here is **HexMe**, the first dataset composed of tetrahedral meshes *with feature-entities* whose main purpose is to humanly benchmark the hexahedral meshers, and related algorithms such as 3D frame field generation.
 
 The originality of this dataset is to gather tetrahedral meshes with information about feature entities, in order to enable an objective basis for the assessment of the behavior of hexahedral methods.
 Hence, we don't claim any rights for the CAD models that are used to produce the meshes (related licenses listed below).
@@ -41,9 +41,9 @@ Relevant information about the CAD models is available within the corresponding 
 
 For each CAD model, three kinds of meshes are provided:
 
-- a **c**oarse mesh: only the maximal mesh size is bounded
+- a **c**urvature-adapted mesh: only the maximal mesh size is bounded
 - a **u**niform mesh: the mesh size is constant
-- a **b**ounding mesh: the CAD model is embedded into a box which is as twice larger than the bounding box and this box model is meshed accordingly
+- a **b**ox-embedded mesh: the CAD model is embedded into a box which is as twice larger than the bounding box and this box model is meshed accordingly
 
 The mesh parameters used by Gmsh are defined in the metadata files `meta/(s|n|i)(\d{2})(c|u|b)_{extra}.yaml`, which means that for each model there are three more metadata files, one per mesh type `(c|u|b)`.
 
@@ -54,8 +54,8 @@ Filenames correspond to the CAD ones, i.e. `(s|n|i)(\d{2})(c|u|b)_{extra}.vtk`:
 - `(c|u|b)` is the kind of mesh
 - `{extra}` corresponds to an arbitrary description (if any) of the CAD file
 
-A [webpage](https://cgg.unibe.ch/hexme/) hosts a catalog of those meshes, where it is possible to download a specific mesh (and associated files).
-Otherwise, all meshes (and the corresponding log files) are [downloadable](https://cgg.unibe.ch/hexme/hexme.zip) in a single `.zip` file (~1.5GB).
+A [webpage](https://hexme.algohex.eu/catalog/) hosts a catalog of those meshes, where it is possible to download a specific mesh (and associated files).
+Otherwise, all meshes (and the corresponding log files) are [downloadable](https://hexme.algohex.eu/catalog/hexme.zip) in a single `.zip` file (~1.5GB).
 
 
 ## Mesh format
@@ -75,7 +75,7 @@ The unstructured grid is defined by four sections:
 
 ## Licenses
 
-**HEXME dataset is distributed under the [`MIT License`](https://mit-license.org/).**
+**HexMe dataset is distributed under the [`MIT License`](https://mit-license.org/).**
 
 The licenses related to the CAD models are given in the corresponding metadata files `meta/*.yaml`:
 
@@ -96,4 +96,4 @@ Pierre-Alexandre Beaufort, Computer Graphics Group, University of Bern
 
 pierre-alexandre (dot) beaufort (at) inf (dot) unibe (dot) ch
 
-[ERC AlgoHex](https://www.algohex.eu/)
+[ERC AlgoHex](https://www.algohex.eu/), grant agreement No 853343
